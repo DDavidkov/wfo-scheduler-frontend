@@ -1,0 +1,26 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+}
+
+:root {
+  --text-color: #707070;
+
+  --primary-color: #00338d;
+  --secondary-color: #0091da;
+  --accent-color: #6d2077;
+
+  --light-color: #fff;
+
+  --small-space: 0.25rem;
+  --medium-space: 0.5rem;
+  --large-space: 1rem;
+  --very-large-space: 1.5rem;
+}
