@@ -1,0 +1,17 @@
+.logo-container {
+  display: flex;
+  height: 100%;
+}
+
+.logo-text {
+  color: var(--contrast-color);
+  font-size: 2rem;
+  font-size: bold;
+  text-transform: uppercase;
+  line-height: 4rem;
+  margin-left: 0.5rem;
+}
+
+.kpmg-logo {
+  width: 100px;
+}

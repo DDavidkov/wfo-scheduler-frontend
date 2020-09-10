@@ -10,17 +10,58 @@ body {
   font-family: "Nunito", sans-serif;
 }
 
+p {
+  max-width: 60ch;
+  color: var(--text-color);
+}
+
 :root {
-  --text-color: #707070;
+  --text-color: #3b3b3b;
 
-  --primary-color: #00338d;
-  --secondary-color: #0091da;
-  --accent-color: #6d2077;
+  --primary-color: #470a68;
+  --secondary-color: #6d2077;
+  --accent-color: #0091da;
 
-  --light-color: #fff;
+  --contrast-color: #fff;
 
-  --small-space: 0.25rem;
-  --medium-space: 0.5rem;
-  --large-space: 1rem;
-  --very-large-space: 1.5rem;
+  --success-color: #43b02a;
+  --success-color-highlight: #327e21;
+  --error-color: #e20745;
+  --error-color-highlight: #bc204b;
+}
+
+.spacer > * + * {
+  margin-top: 1rem;
+}
+
+.spacer-horizontal > * + * {
+  margin-left: 0.75rem;
+}
+
+.application-background {
+  background: url("/application-background.jpg") top left / cover no-repeat;
+  height: calc(100vh - 4rem);
+}
+
+.main-container {
+  padding: 2rem calc(10% + 2rem);
+  max-width: max-content;
+}
+
+.section-splitter {
+  margin-bottom: 1rem;
+  border: none;
+  border-bottom: 1px solid var(--text-color);
+}
+
+.fa-icon::before {
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-size: 1.25rem;
+  cursor: pointer;
+  font-weight: 900;
 }
