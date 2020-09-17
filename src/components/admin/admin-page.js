@@ -1,8 +1,17 @@
 import React, { useEffect } from "react";
-import "./admin-page.scss";
 import { connect } from "react-redux";
+
 import { getEmployeeInfo, logout } from "../../redux/effects/employees";
 import { LinkButton } from "../common/button";
+
+import "./admin-page.scss";
+
+const Field = ({ label, value }) => (
+  <div className="field-container space-between spacer-horizontal">
+    <p className="gray-color text-md">{label}:</p>
+    <p className="text-md">{value}</p>
+  </div>
+);
 
 export const Admin = ({
   employeeInfo,
@@ -13,48 +22,36 @@ export const Admin = ({
   useEffect(() => {
     getEmployeeInfo(currentEmployee);
   }, [currentEmployee]);
+
   return (
-    <div className="application-background">
-      <div className="main-container spacer">
-        <p className="title">Profile</p>
-        {employeeInfo && (
-          <>
-            <div className="field-container">
-              <p className="label">First name:</p>
-              <p className="info-text">{employeeInfo.first_name}</p>
-            </div>
-            <div className="field-container">
-              <p className="label">Last name:</p>
-              <p className="info-text">{employeeInfo.last_name}</p>
-            </div>
-            <div className="field-container">
-              <p className="label">Role:</p>
-              <p className="info-text">{employeeInfo.role}</p>
-            </div>
-            <div className="field-container">
-              <p className="label">Team:</p>
-              <p className="info-text">
-                {employeeInfo.team ? employeeInfo.team.name : "None"}
-              </p>
-            </div>
-            <div className="field-container">
-              <p className="label">Manager:</p>
-              <p className="info-text">
-                {employeeInfo.manager
-                  ? `${employeeInfo.manager.first_name} ${employeeInfo.manager.last_name}`
-                  : "None"}
-              </p>
-            </div>
-            <LinkButton
-              text="Logout"
-              href="/"
-              onClick={() => {
-                logout();
-              }}
-            />
-          </>
-        )}
-      </div>
+    <div className="spacer">
+      <p className="title">Profile</p>
+      {employeeInfo && (
+        <>
+          <Field label="First name" value={employeeInfo.first_name} />
+          <Field label="Last name" value={employeeInfo.last_name} />
+          <Field label="Role" value={employeeInfo.role} />
+          <Field
+            label="Team"
+            value={employeeInfo.team ? employeeInfo.team.name : "None"}
+          />
+          <Field
+            label="Manager"
+            value={
+              employeeInfo.manager
+                ? `${employeeInfo.manager.first_name} ${employeeInfo.manager.last_name}`
+                : "None"
+            }
+          />
+          <LinkButton
+            text="Logout"
+            to="/"
+            onClick={() => {
+              logout();
+            }}
+          />
+        </>
+      )}
     </div>
   );
 };

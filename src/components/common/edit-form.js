@@ -1,5 +1,4 @@
 import React from "react";
-import "./edit-form.scss";
 import { FormTemplate } from "./form-template";
 import { Button } from "./button";
 import { Popup } from "./popup";
@@ -8,7 +7,7 @@ export const EditForm = ({ submit, fields, onHide, initialValue }) => (
   <Popup
     content={
       <div className="spacer">
-        <p className="form-title">Edit value</p>
+        <p className="subtitle">Edit value</p>
         <FormTemplate
           initialValue={initialValue}
           fields={fields}
@@ -18,10 +17,14 @@ export const EditForm = ({ submit, fields, onHide, initialValue }) => (
           }}
           showSubmitButton={false}
           buttonTemplate={
-            <div className="button-container">
-              <Button type="yes-button" text="Submit" isSubmit={true} />
+            <div className="space-between">
               <Button
-                type="no-button"
+                additionalClasses="yes-button"
+                text="Submit"
+                type="submit"
+              />
+              <Button
+                additionalClasses="no-button"
                 text="Cancel"
                 onClick={() => {
                   onHide && onHide();

@@ -1,22 +1,3 @@
-.title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.info-text {
-  font-size: 1.25rem;
-  color: var(--text-color);
-}
-
-.label {
-  color: #aaa;
-  font-size: 1.25rem;
-  margin-right: 2rem;
-}
-
 .field-container {
-  display: flex;
-  justify-content: space-between;
-  min-width: 15rem;
+  min-width: 20rem;
 }

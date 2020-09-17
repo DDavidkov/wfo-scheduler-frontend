@@ -9,26 +9,8 @@
   top: 10%;
   left: 10%;
 
-  color: var(--contrast-color);
   background: rgba(0, 0, 0, 0.15);
 
   padding: 2rem 3rem;
   border-radius: 0.5rem;
-}
-
-.landing-text {
-  font-size: 1.5rem;
-  color: var(--contrast-color);
-  line-height: 1.1;
-}
-
-.landing-text-small {
-  color: var(--contrast-color);
-  font-size: 1.25rem;
-}
-
-.landing-header {
-  font-size: 2rem;
-  font-weight: bold;
-  text-transform: uppercase;
 }

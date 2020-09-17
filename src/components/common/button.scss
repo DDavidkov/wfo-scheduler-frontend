@@ -1,14 +1,12 @@
 .btn {
   border: none;
   outline: none;
-  background: var(--primary-color);
-  color: var(--contrast-color);
   padding: 0.5rem 1.25rem;
   border-radius: 0.25rem;
   text-transform: uppercase;
   font-family: "Nunito", sans-serif;
   cursor: pointer;
-  min-width: 120px;
+  min-width: 7.5rem;
   text-align: center;
 }
 
@@ -26,7 +24,7 @@
 }
 
 .btn.no-button:hover,
-.btn-yes-button:focus {
+.btn.no-button:focus {
   background: var(--error-color-highlight);
 }
 
@@ -41,6 +39,6 @@
 }
 
 .link-btn {
-  display: inline-block;
   text-decoration: none;
+  display: inline-block;
 }

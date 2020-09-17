@@ -2,36 +2,45 @@ import React from "react";
 import "./nav-bar.scss";
 import { Logo } from "./logo";
 import { connect } from "react-redux";
+import { LinkButton } from "../common/button";
 
 export const NavBar = ({ currentEmployee, role, team }) => (
   <header>
-    <nav className="navigation">
+    <nav className="navigation space-between">
       <Logo />
       {currentEmployee && (
         <ul className="navigation-list spacer-horizontal">
           <li>
-            <a className="navigation-list-item" href="/home">
-              Home
-            </a>
+            <LinkButton
+              additionalClasses="navigation-list-item text-md"
+              to="/home"
+              text="Home"
+            />
           </li>
           {team && team.name && (
             <li>
-              <a className="navigation-list-item" href="/request">
-                Request
-              </a>
+              <LinkButton
+                additionalClasses="navigation-list-item text-md"
+                to="/request"
+                text="Request"
+              />
             </li>
           )}
           {role === "Manager" && (
             <li>
-              <a className="navigation-list-item" href="/manage">
-                Manage
-              </a>
+              <LinkButton
+                additionalClasses="navigation-list-item text-md"
+                to="/manage"
+                text="Manage"
+              />
             </li>
           )}
           <li>
-            <a className="navigation-list-item" href="/admin">
-              {role === "Admin" ? "Admin" : "Profile"}
-            </a>
+            <LinkButton
+              additionalClasses="navigation-list-item text-md"
+              to="/admin"
+              text={role === "Admin" ? "Admin" : "Profile"}
+            />
           </li>
         </ul>
       )}

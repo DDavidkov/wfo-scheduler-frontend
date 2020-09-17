@@ -30,53 +30,51 @@ export const Manage = ({
   ];
 
   return (
-    <div className="application-background">
-      <div className="main-container spacer">
-        <div className="manage-header">
-          <p className="title">Manage your team:</p>
-          <p className="team-name">{team && team.name}</p>
-        </div>
-        <p className="title">Requests to approve</p>
-        <Grid
-          data={teamRequests.filter((r) => !r.approved)}
-          columns={columns}
-          canDelete={false}
-          canEdit={false}
-          onDelete={(row) => {
-            deleteTeamRequest(row.id);
-          }}
-          actions={[
-            {
-              header: "Approve",
-              template: (
-                <div className="icon-button">
-                  <i className="far fa-calendar-check" />
-                </div>
-              ),
-              action: (row) => {
-                approveRequest(row.id);
-              }
-            },
-            {
-              header: "Reject",
-              template: (
-                <div className="icon-button">
-                  <i className="fas fa-trash"></i>
-                </div>
-              ),
-              isDelete: true
-            }
-          ]}
-        />
-        <hr className="section-splitter" />
-        <p className="title">Approved Requests</p>
-        <Grid
-          data={teamRequests.filter((r) => r.approved)}
-          columns={columns}
-          canDelete={false}
-          canEdit={false}
-        />
+    <div className="spacer">
+      <div className="space-between">
+        <p className="title">Manage your team:</p>
+        <p className="subtitle primary-color">{team && team.name}</p>
       </div>
+      <p className="subtitle">Requests to approve</p>
+      <Grid
+        data={teamRequests.filter((r) => !r.approved)}
+        columns={columns}
+        canDelete={false}
+        canEdit={false}
+        onDelete={(row) => {
+          deleteTeamRequest(row.id);
+        }}
+        actions={[
+          {
+            header: "Approve",
+            template: (
+              <div className="icon-button text-centered primary-color">
+                <i className="far fa-calendar-check" />
+              </div>
+            ),
+            action: (row) => {
+              approveRequest(row.id);
+            }
+          },
+          {
+            header: "Reject",
+            template: (
+              <div className="icon-button text-centered primary-color">
+                <i className="fas fa-trash"></i>
+              </div>
+            ),
+            isDelete: true
+          }
+        ]}
+      />
+      <hr className="section-splitter" />
+      <p className="subtitle">Approved Requests</p>
+      <Grid
+        data={teamRequests.filter((r) => r.approved)}
+        columns={columns}
+        canDelete={false}
+        canEdit={false}
+      />
     </div>
   );
 };

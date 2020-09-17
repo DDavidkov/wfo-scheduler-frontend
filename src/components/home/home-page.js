@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
-import "./home-page.scss";
 import { Grid } from "../common/grid";
 import { LinkButton } from "../common/button";
 import {
@@ -60,44 +59,42 @@ export const Home = ({
   ];
 
   return (
-    <div className="application-background">
-      <div className="main-container spacer">
-        <div className="title-container">
-          <p className="request-title">Your requests</p>
-          <LinkButton href="/request" text="New Request" />
-        </div>
-        <Grid
-          data={currentRequests}
-          columns={[
-            { header: "Description", field: "description" },
-            { header: "Team", field: "team" },
-            { header: "Date", field: "date" },
-            { header: "Approved", field: "approved" }
-          ]}
-          editFields={editFields}
-          onEdit={(request) => {
-            putEmployeeRequest(request);
-          }}
-          onDelete={(request) => {
-            deleteEmployeeRequest(request.id);
-          }}
-        />
-
-        <hr className="section-splitter"></hr>
-
-        <p className="request-title">Previous requests</p>
-        <Grid
-          data={previousRequests}
-          canDelete={false}
-          canEdit={false}
-          columns={[
-            { header: "Description", field: "description" },
-            { header: "Team", field: "team" },
-            { header: "Date", field: "date" },
-            { header: "Approved", field: "approved" }
-          ]}
-        />
+    <div className="spacer">
+      <div className="centered space-between">
+        <p className="title">Your requests</p>
+        <LinkButton to="/request" text="New Request" />
       </div>
+      <Grid
+        data={currentRequests}
+        columns={[
+          { header: "Description", field: "description" },
+          { header: "Team", field: "team" },
+          { header: "Date", field: "date" },
+          { header: "Approved", field: "approved" }
+        ]}
+        editFields={editFields}
+        onEdit={(request) => {
+          putEmployeeRequest(request);
+        }}
+        onDelete={(request) => {
+          deleteEmployeeRequest(request.id);
+        }}
+      />
+
+      <hr className="section-splitter"></hr>
+
+      <p className="title">Previous requests</p>
+      <Grid
+        data={previousRequests}
+        canDelete={false}
+        canEdit={false}
+        columns={[
+          { header: "Description", field: "description" },
+          { header: "Team", field: "team" },
+          { header: "Date", field: "date" },
+          { header: "Approved", field: "approved" }
+        ]}
+      />
     </div>
   );
 };

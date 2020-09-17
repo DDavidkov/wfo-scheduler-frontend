@@ -25,14 +25,14 @@ export const Landing = ({ login }) => {
   return (
     <div className="landing-container">
       <div className="landing-text-container spacer">
-        <h2 className="landing-header">Schedule your work</h2>
-        <p className="landing-text">
+        <h2 className="title contrast-color">Schedule your work</h2>
+        <p className="text-lg contrast-color">
           We are here to ensure that the environment you work in is safe. Login
           to access and synchronize your schedule with your teammates.
         </p>
         <form className="spacer" onSubmit={submit}>
           <div>
-            <p className="landing-text-small">Email:</p>
+            <p className="text-md contrast-color">Email:</p>
             <TextInput
               placeholder="Enter email"
               type="email"
@@ -44,7 +44,7 @@ export const Landing = ({ login }) => {
             />
           </div>
           <div>
-            <p className="landing-text-small">Password:</p>
+            <p className="text-md contrast-color">Password:</p>
             <TextInput
               placeholder="Enter password"
               type="password"
@@ -55,7 +55,7 @@ export const Landing = ({ login }) => {
               }}
             />
           </div>
-          <Button text="Login" isSubmit={true} />
+          <Button text="Login" type="submit" />
         </form>
       </div>
     </div>

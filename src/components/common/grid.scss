@@ -2,17 +2,8 @@
   width: 100%;
 }
 
-.header-row {
-  background: var(--primary-color);
-}
-
 .header-cell {
-  color: var(--contrast-color);
   border-spacing: 0;
-}
-
-.table-cell {
-  color: var(--text-color);
 }
 
 .header-cell,
@@ -40,8 +31,4 @@
 
 .delete-cell::before {
   content: "\f1f8";
-}
-
-.empty-cell {
-  text-align: center;
 }

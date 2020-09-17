@@ -9,7 +9,9 @@ export const TextInput = ({
 }) => (
   <div
     style={{ width, height }}
-    className={"text-input-container" + (disabled ? " disabled" : "")}
+    className={
+      "text-input-container text-color" + (disabled ? " disabled" : "")
+    }
   >
     <input className="text-input" disabled={disabled} {...rest} />
   </div>

@@ -1,7 +1,5 @@
 .navigation {
   background: var(--primary-color);
-  display: flex;
-  justify-content: space-between;
   height: 4rem;
   padding: 0 calc(10% + 2rem);
 }
@@ -14,11 +12,19 @@
 
 .navigation-list-item {
   text-decoration: none;
-  color: var(--contrast-color);
   text-transform: uppercase;
-  font-size: 1.125rem;
   transition: opacity 200ms linear;
   position: relative;
+}
+
+.link-btn.navigation-list-item {
+  min-width: unset;
+  padding: unset;
+}
+
+.link-btn.navigation-list-item:hover,
+.link-btn.navigation-list-item:focus {
+  background: unset;
 }
 
 .navigation-list-item::after {

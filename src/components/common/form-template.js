@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import "./form-template.scss";
+import React, { useState } from "react";
 
 import { TextInput } from "./inputs";
 import { Button } from "./button";
@@ -26,7 +25,7 @@ export const FormTemplate = ({
     <form className="spacer" onSubmit={onSubmit}>
       {fields.map(({ label, name, formatter, onChange, ...rest }) => (
         <div key={"form-input-" + name}>
-          <p className="form-label">{label}:</p>
+          <p className="text-md">{label}:</p>
           <TextInput
             value={
               formatter && formValue[name]
@@ -49,7 +48,7 @@ export const FormTemplate = ({
       {buttonTemplate ? (
         buttonTemplate
       ) : (
-        <Button text="Submit" isSubmit={true} disabled={submitDisabled} />
+        <Button text="Submit" type="submit" disabled={submitDisabled} />
       )}
     </form>
   );

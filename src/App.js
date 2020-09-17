@@ -25,28 +25,32 @@ const App = ({ currentEmployee, getTeam }) => {
 
   return (
     <>
-      <NavBar />
-      {currentEmployee ? (
-        <Router>
-          <Switch>
-            <Redirect path="/" exact to="/home" />
-            <Route path="/manage">
-              <Manage />
-            </Route>
-            <Route path="/request">
-              <Request />
-            </Route>
-            <Route path="/admin">
-              <Admin />
-            </Route>
-            <Route path="/home">
-              <Home />
-            </Route>
-          </Switch>
-        </Router>
-      ) : (
-        <Landing />
-      )}
+      <Router>
+        <NavBar />
+        {currentEmployee ? (
+          <div className="application-background">
+            <div className="main-container">
+              <Switch>
+                <Redirect path="/" exact to="/home" />
+                <Route path="/manage">
+                  <Manage />
+                </Route>
+                <Route path="/request">
+                  <Request />
+                </Route>
+                <Route path="/admin">
+                  <Admin />
+                </Route>
+                <Route path="/home">
+                  <Home />
+                </Route>
+              </Switch>
+            </div>
+          </div>
+        ) : (
+          <Landing />
+        )}
+      </Router>
     </>
   );
 };

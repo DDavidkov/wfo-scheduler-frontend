@@ -18,85 +18,91 @@ export const Request = ({
   getAvailability
 }) => {
   return (
-    <div className="application-background">
-      <div className="main-container request-container">
-        <div className="spacer">
-          <p className="form-title">Submit new request</p>
-          {team && (
-            <FormTemplate
-              fields={[
-                {
-                  label: "Description",
-                  name: "description",
-                  required: true,
-                  placeholder: "Enter description",
-                  width: "100%"
+    <div className="request-container">
+      <div className="spacer">
+        <p className="title">Submit new request</p>
+        {team && (
+          <FormTemplate
+            fields={[
+              {
+                label: "Description",
+                name: "description",
+                required: true,
+                placeholder: "Enter description",
+                width: "100%"
+              },
+              {
+                label: "Team",
+                name: "team",
+                required: true,
+                disabled: true,
+                width: "100%"
+              },
+              {
+                label: "Date",
+                name: "date",
+                required: true,
+                placeholder: "Enter date",
+                formatter: {
+                  to: (date) => date.toISOString().split("T")[0],
+                  from: (dateString) => new Date(dateString)
                 },
-                {
-                  label: "Team",
-                  name: "team",
-                  required: true,
-                  disabled: true,
-                  width: "100%"
+                type: "date",
+                min: TOMORROW.toISOString().split("T")[0],
+                onChange: (value) => {
+                  getAvailability(team.id, value);
                 },
-                {
-                  label: "Date",
-                  name: "date",
-                  required: true,
-                  placeholder: "Enter date",
-                  formatter: {
-                    to: (date) => date.toISOString().split("T")[0],
-                    from: (dateString) => new Date(dateString)
-                  },
-                  type: "date",
-                  min: TOMORROW.toISOString().split("T")[0],
-                  onChange: (value) => {
-                    getAvailability(team.id, value);
-                  },
-                  width: "100%"
-                }
-              ]}
-              initialValue={{
-                team: team.name,
-                employee_id: currentEmployee
-              }}
-              submit={(value) => {
-                if (availability && availability.overLimit === false) {
-                  postEmployeeRequest(value);
-                }
-              }}
-              submitDisabled={!availability || availability.overLimit !== false}
-            ></FormTemplate>
-          )}
-        </div>
-        <div className="availability-container spacer">
-          {!availability ? (
-            <p className="info-text">Select a date to see the availability</p>
-          ) : (
-            <>
-              <p className="availability-label">
-                {availability.requests.length
-                  ? "The following team members have already requested WFO on this date:"
-                  : "No team members have requested WFO on this date."}
-              </p>
-              <div className="availability-requests-container">
-                {availability.requests.map((r) => (
-                  <p className="request-label">{r.employee}</p>
-                ))}
-              </div>
-              <p>{"Your team limit is: " + availability.teamLimit}</p>
-              <p
-                className={
-                  availability.overLimit ? "color-error" : "color-success"
-                }
-              >
-                {availability.overLimit
-                  ? "You can't make a request for this date because your team quota is already fulfilled."
-                  : "You can make a requests for this date"}
-              </p>
-            </>
-          )}
-        </div>
+                width: "100%"
+              }
+            ]}
+            initialValue={{
+              team: team.name,
+              employee_id: currentEmployee
+            }}
+            submit={(value) => {
+              if (availability && availability.overLimit === false) {
+                postEmployeeRequest(value);
+              }
+            }}
+            submitDisabled={!availability || availability.overLimit !== false}
+          ></FormTemplate>
+        )}
+      </div>
+      <div
+        className={
+          "availability-container spacer" + (!availability ? " centered" : "")
+        }
+      >
+        {!availability ? (
+          <p className="info-text text-md gray-color">
+            Select a date to see the availability
+          </p>
+        ) : (
+          <>
+            <p className="text-lg">
+              {availability.requests.length
+                ? "The following team members have already requested WFO on this date:"
+                : "No team members have requested WFO on this date."}
+            </p>
+            <div className="availability-requests-container">
+              {availability.requests.map((r) => (
+                <p className="text-md request-label">{r.employee}</p>
+              ))}
+            </div>
+            <p className="text-md">
+              {"Your team limit is: " + availability.teamLimit}
+            </p>
+            <p
+              className={
+                availability.overLimit ? "error-color" : "success-color"
+              }
+            >
+              {availability.overLimit
+                ? "You can't make a request for this date because your team quota is already fulfilled."
+                : "You can make a requests for this date"}
+            </p>
+          </>
+        )}
       </div>
     </div>
   );

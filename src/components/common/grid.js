@@ -42,18 +42,18 @@ export const Grid = ({
     <>
       <table cellPadding="0" cellSpacing="0" className="table">
         <thead>
-          <tr className="header-row">
+          <tr className="header-row primary-background">
             {columns.map((column) => (
-              <th key={column.header} className="header-cell">
+              <th key={column.header} className="header-cell contrast-color">
                 {column.header}
               </th>
             ))}
-            {canEdit && <th className="header-cell" />}
-            {canDelete && <th className="header-cell" />}
+            {canEdit && <th className="header-cell contrast-color" />}
+            {canDelete && <th className="header-cell contrast-color" />}
             {actions.map((action) => (
               <th
                 key={"action-header-" + action.header}
-                className="header-cell"
+                className="header-cell contrast-color"
               >
                 {action.header}
               </th>
@@ -65,7 +65,10 @@ export const Grid = ({
             data.map((row, i) => (
               <tr key={"row-" + i} className="table-row">
                 {columns.map((column, j) => (
-                  <td key={"cell-" + i + "-" + j} className="table-cell">
+                  <td
+                    key={"cell-" + i + "-" + j}
+                    className="table-cell text-color"
+                  >
                     {getValue(row[column.field])}
                   </td>
                 ))}
@@ -104,7 +107,10 @@ export const Grid = ({
             ))
           ) : (
             <tr className="table-row">
-              <td className="table-cell empty-cell" colSpan={getColumnCount()}>
+              <td
+                className="table-cell text-centered text-color"
+                colSpan={getColumnCount()}
+              >
                 There is no data to be shown.
               </td>
             </tr>
