@@ -1,0 +1,116 @@
+// ====================== CSS Variables ======================
+:root {
+  --text-color: #3b3b3b;
+  --contrast-color: #fff;
+  --gray-color: #aaa;
+
+  --primary-color: #470a68;
+  --secondary-color: #6d2077;
+
+  --success-color: #43b02a;
+  --success-color-highlight: #327e21;
+
+  --error-color: #e20745;
+  --error-color-highlight: #bc204b;
+}
+
+// ====================== Default style ======================
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+}
+
+p {
+  max-width: 60ch;
+  color: var(--text-color);
+}
+
+// ====================== Spacers ======================
+
+.spacer > * + * {
+  margin-top: 1rem;
+}
+
+.spacer-horizontal > * + * {
+  margin-left: 1rem;
+}
+
+// ====================== Typography ======================
+
+.title {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.text-lg {
+  font-size: 1.5rem;
+}
+
+.text-md {
+  font-size: 1.25rem;
+}
+
+// ====================== Colors ======================
+
+.text-color {
+  color: var(--text-color);
+}
+
+.contrast-color {
+  color: var(--contrast-color);
+}
+
+.gray-color {
+  color: var(--gray-color);
+}
+
+.primary-color {
+  color: var(--primary-color);
+}
+
+.secondary-color {
+  color: var(--secondary-color);
+}
+
+.error-color {
+  color: var(--error-color);
+}
+
+.success-color {
+  color: var(--success-color);
+}
+
+.primary-background {
+  background: var(--primary-color);
+}
+
+// ====================== Layout ======================
+
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-centered {
+  text-align: center;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
