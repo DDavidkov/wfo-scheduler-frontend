@@ -2,13 +2,13 @@
 
 ## Implicit return
 
-It is valid to not have curly braces around a function if it has a single statement and the function will return the result of that statement
+It is valid to not have curly braces around a function if it has a single statement and the function will return the result of that statement:
 
 ```javascript
 const sum = (a, b) => a + b;
 ```
 
-Which is the same as writing
+Which is the same as writing:
 
 ```javascript
 const sum = (a, b) => {
@@ -100,7 +100,7 @@ You can get directly the properties of an object by specifying their names insid
 const { prop1, prop2 } = obj;
 ```
 
-You can also do that to function arguments (and this also can be done to the props in a functional component)
+You can also do that to function arguments (and this also can be done to the props in a functional component):
 
 ```javascript
 const myFunctionalComponent = ({ prop1, prop2 }) => (
