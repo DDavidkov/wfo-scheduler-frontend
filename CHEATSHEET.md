@@ -22,12 +22,12 @@ Note that if you return an object you need to wrap it in brackets:
 const sum = (a, b) => ({ sum: a + b });
 ```
 
-## Simpler object creation
+## Object Property Value Shorthand
 
-When creating an object, if a property has the same name as the variable you will assign it to, you can simply use the property name once and it will be equivalent to specifying the property name and assigning it to the variable:
+When creating an object, if a property name is the same as the variable you want to assign it to, you can simply use the property name once and it will be equivalent to specifying the property name and assigning it to the variable:
 
 ```javascript
-const name = "Dimitar";
+const name = "John Doe";
 
 const person = { name };
 ```
@@ -35,7 +35,7 @@ const person = { name };
 This is equivalent to:
 
 ```javascript
-const name = "Dimitar";
+const name = "John Doe";
 
 const person = { name: name };
 ```
@@ -173,6 +173,14 @@ Also you can combine arrays this way, as well:
 const newArray = [...array1, ...array2];
 ```
 
+Another thing you can do with the spread operator is to use for object creation. The new object will have the same fields as the "spread" object and you can define additional properties to it:
+
+````javascript
+const firstObject = {propertyName: "First property" };
+
+const secondObject = {...firstObject, anotherProperty: "Second property"};
+```
+
 ## Computed property names
 
 You can use variable values to create objects dynamically:
@@ -181,14 +189,14 @@ You can use variable values to create objects dynamically:
 const propName = "MyName";
 
 const obj = { [propName]: "MyName field has this value" };
-```
+````
 
 ## Async/Await
 
 You can use await inside async functions to wait for the execution of promises:
 
 ```javascript
-const makeGetRequest = async (url) => {
+const makeGetRequest = async url => {
   const res = await fetch(url);
   const json = await res.json();
 
@@ -205,7 +213,7 @@ There are several array functions that accept other a functions as their input t
 Map goes through all items in the array and applies the passed function to each of them:
 
 ```javascript
-const double = (numbers) => numbers.map((number) => number * 2);
+const double = numbers => numbers.map(number => number * 2);
 ```
 
 ### Filter
@@ -213,8 +221,7 @@ const double = (numbers) => numbers.map((number) => number * 2);
 Filter calls the passed function on each item and keeps the item in the result only if the returned value from the function call is "truthy":
 
 ```javascript
-const filterSmallNumbers = (numbers) =>
-  number.filter((number) => number > 1000000);
+const filterSmallNumbers = numbers => number.filter(number => number > 1000000);
 ```
 
 ### Reduce
