@@ -1,0 +1,15 @@
+.btn {
+  min-width: 7.5rem;
+  font-family: "Nunito", sans-serif;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+}
+
+.btn:hover {
+  background: var(--secondary-color);
+}

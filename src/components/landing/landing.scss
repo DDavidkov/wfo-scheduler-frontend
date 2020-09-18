@@ -1,0 +1,14 @@
+.landing-container {
+  height: calc(100vh - 4rem);
+  background: url("/landing-background.jpg") top left/ cover no-repeat;
+  position: relative;
+}
+
+.text-container {
+  background: rgba(0, 0, 0, 0.45);
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  padding: 2rem 3rem;
+  border-radius: 0.5rem;
+}
