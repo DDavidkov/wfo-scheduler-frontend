@@ -7,5 +7,5 @@ export const Table = ({
   editAction,
   deleteAction
 }) => {
-  return <p>Table</p>;
+  return <table cellPadding="0" cellSpacing="0"></table>;
 };
