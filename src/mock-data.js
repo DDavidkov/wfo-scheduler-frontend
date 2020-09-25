@@ -37,10 +37,8 @@ export const TABLE_DATA = [
 ];
 
 export const TABLE_COLUMNS = [
-  [
-    { header: "Description", field: "description" },
-    { header: "Team", field: "team" },
-    { header: "Date", field: "date", type: "date" },
-    { header: "Approved", field: "approved", type: "bool" }
-  ]
+  { header: "Description", field: "description" },
+  { header: "Team", field: "team" },
+  { header: "Date", field: "date", type: "date" },
+  { header: "Approved", field: "approved", type: "bool" }
 ];

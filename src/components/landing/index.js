@@ -1,8 +1,7 @@
 import React from "react";
 import "./index.scss";
 
-import { Input } from "../common/input";
-import { Button } from "../common/buttons";
+import { Form } from "../common/form";
 
 export class Landing extends React.Component {
   constructor(props) {
@@ -11,18 +10,28 @@ export class Landing extends React.Component {
     this.handleLogin = this.handleLogin.bind(this);
   }
 
-  handleLogin = () => {
-    if (this.state.userName && this.state.password) {
-      this.props.login &&
-        this.props.login(this.state.userName, this.state.password);
+  handleLogin = ({ userName, password }) => {
+    if (this.props.login) {
+      this.props.login(userName, password);
     }
   };
 
-  onInputChange = (e, fieldName) => {
-    this.setState({ [fieldName]: e.target.value });
-  };
-
   render() {
+    const fields = [
+      {
+        name: "userName",
+        label: "Username",
+        placeholder: "Enter username",
+        required: true
+      },
+      {
+        name: "password",
+        label: "Password",
+        placeholder: "Enter password",
+        required: true
+      }
+    ];
+
     return (
       <div className="landing-container">
         <div className="text-container spacer">
@@ -31,23 +40,13 @@ export class Landing extends React.Component {
             We are here to ensure that the environment you work in is safe.
             Login to access and synchronize your schedule with your teammates.
           </p>
-          <p className="contrast-color text-md">Username:</p>
-          <Input
-            placeholder="Enter username"
-            onChange={e => {
-              this.onInputChange(e, "userName");
-            }}
-            value={this.state.userName}
+          <Form
+            fields={fields}
+            isContrast={true}
+            initialValue={{ userName: "", password: "" }}
+            submitText="Login"
+            onSubmit={this.handleLogin}
           />
-          <p className="contrast-color text-md">Password:</p>
-          <Input
-            placeholder="Enter username"
-            onChange={e => {
-              this.onInputChange(e, "password");
-            }}
-            value={this.state.password}
-          />
-          <Button text="Login" onClick={this.handleLogin} />
         </div>
       </div>
     );
