@@ -1,5 +1,6 @@
 import React from "react";
-import "./landing.scss";
+import "./index.scss";
+
 import { Input } from "../common/input";
 import { Button } from "../common/buttons";
 
@@ -25,8 +26,11 @@ export class Landing extends React.Component {
     return (
       <div className="landing-container">
         <div className="text-container spacer">
-          <p className="title contrast-color">Schedule your work safely</p>
-          <p className="subtitle contrast-color">Work in a safe environment</p>
+          <p className="title contrast-color">Schedule your work</p>
+          <p className="text-lg contrast-color">
+            We are here to ensure that the environment you work in is safe.
+            Login to access and synchronize your schedule with your teammates.
+          </p>
           <p className="contrast-color text-md">Username:</p>
           <Input
             placeholder="Enter username"
@@ -35,7 +39,7 @@ export class Landing extends React.Component {
             }}
             value={this.state.userName}
           />
-          <p className="contrast-color text-md">Password</p>
+          <p className="contrast-color text-md">Password:</p>
           <Input
             placeholder="Enter username"
             onChange={e => {

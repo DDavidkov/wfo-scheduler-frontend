@@ -1,6 +1,7 @@
 import React from "react";
+
 import { NavigationBar } from "./components/core/navigation-bar";
-import { Landing } from "./components/landing/landing";
+import { Landing } from "./components/landing";
 
 export class App extends React.Component {
   constructor(props) {

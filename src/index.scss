@@ -98,6 +98,14 @@ p {
   background: var(--primary-color);
 }
 
+.success-background {
+  background: var(--success-color);
+}
+
+.error-background {
+  background: var(--error-color);
+}
+
 // ====================== Layout ======================
 
 .centered {
@@ -113,4 +121,30 @@ p {
 .space-between {
   display: flex;
   justify-content: space-between;
+}
+
+// ====================== Font Awesome ======================
+
+.fa-icon::before {
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-size: 1.25rem;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+// Default pages styling
+
+.application-background {
+  background: url("/application-background.jpg") top left / cover no-repeat;
+  height: calc(100vh - 4rem);
+}
+
+.main-container {
+  padding: 2rem 10%;
+  max-width: max-content;
 }

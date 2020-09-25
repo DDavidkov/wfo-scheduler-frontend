@@ -1,0 +1,34 @@
+.table {
+  width: 100%;
+}
+
+.header-cell {
+  border-spacing: 0;
+}
+
+.header-cell,
+.table-cell {
+  padding: 0.25rem 0.75rem;
+}
+
+.table-cell.edit-cell {
+  padding: 0 0.75rem;
+}
+
+.delete-cell::before,
+.edit-cell::before {
+  color: var(--primary-color);
+}
+
+.edit-cell:hover::before,
+.delete-cell:hover::before {
+  color: var(--secondary-color);
+}
+
+.edit-cell::before {
+  content: "\f304";
+}
+
+.delete-cell::before {
+  content: "\f1f8";
+}

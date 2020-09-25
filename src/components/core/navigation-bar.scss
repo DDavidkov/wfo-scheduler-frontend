@@ -6,8 +6,27 @@
 .nav-item {
   text-decoration: none;
   cursor: pointer;
+  position: relative;
 }
 
 .nav-menu {
   list-style: none;
+}
+
+.nav-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: -0.25rem;
+  height: 0.25rem;
+  border-radius: 0.25rem;
+  background: var(--contrast-color);
+  transform: scaleX(0);
+  transition: transform 300ms ease-in-out;
+}
+
+.nav-item:focus::after,
+.nav-item:hover::after {
+  transform: scaleX(1);
 }
