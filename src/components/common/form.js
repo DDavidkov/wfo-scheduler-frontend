@@ -29,12 +29,12 @@ export class Form extends React.Component {
     return (
       <form className="spacer" onSubmit={this.onSubmit}>
         {this.props.fields.map(({ label, name, ...rest }) => (
-          <div>
+          <div key={"form-input-" + name}>
             <p className={this.props.isContrast ? "contrast-color" : undefined}>
               {label}:
             </p>
             <Input
-              value={this.state.value[name]}
+              value={this.state.value[name] || ""}
               onChange={e => {
                 this.onFieldChange(e.target.value, name);
               }}
@@ -42,7 +42,9 @@ export class Form extends React.Component {
             />
           </div>
         ))}
-        <Button type="submit" text={this.props.submitText || "Submit"} />
+        {this.props.buttonTemplate || (
+          <Button type="submit" text={this.props.submitText || "Submit"} />
+        )}
       </form>
     );
   }

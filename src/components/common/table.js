@@ -1,6 +1,9 @@
 import React from "react";
 import "./table.scss";
 
+import { EditForm } from "./edit-form";
+import { YesNoDialog } from "./yes-no-dialog";
+
 export const Table = ({
   data = [],
   columns = [], // type, header, field
