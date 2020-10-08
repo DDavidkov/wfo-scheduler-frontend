@@ -8,7 +8,7 @@ import { Snackbar } from "./components/common/snackbar";
 export class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isLoggedIn: false, showSnackbar: false };
+    this.state = { isLoggedIn: true, showSnackbar: false };
 
     this.login = this.login.bind(this);
     this.closeSnackbar = this.closeSnackbar.bind(this);

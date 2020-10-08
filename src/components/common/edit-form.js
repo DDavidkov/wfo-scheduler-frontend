@@ -1,6 +1,7 @@
 import React from "react";
 import { Form } from "./form";
 import { Button } from "./buttons";
+import { withPopup } from "./popup";
 
 export const EditForm = ({ onSubmit, fields, onHide, initialValue }) => (
   <div className="spacer">
@@ -8,7 +9,7 @@ export const EditForm = ({ onSubmit, fields, onHide, initialValue }) => (
     <Form
       initialValue={initialValue}
       fields={fields}
-      submit={value => {
+      onSubmit={value => {
         onSubmit && onSubmit(value);
         onHide && onHide();
       }}
@@ -31,3 +32,5 @@ export const EditForm = ({ onSubmit, fields, onHide, initialValue }) => (
     ></Form>
   </div>
 );
+
+export default withPopup(EditForm);

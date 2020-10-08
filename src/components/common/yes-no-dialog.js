@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Button } from "./buttons";
+import { withPopup } from "./popup";
 
 export const YesNoDialog = ({ header, text, onYes, onHide }) => (
   <div className="spacer">
@@ -25,3 +26,5 @@ export const YesNoDialog = ({ header, text, onYes, onHide }) => (
     </div>
   </div>
 );
+
+export default withPopup(YesNoDialog);

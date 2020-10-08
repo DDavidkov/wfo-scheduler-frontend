@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Table } from "../common/table";
 
 import { TABLE_DATA, TABLE_COLUMNS } from "../../mock-data";
 
-export const Home = () => (
-  <div className="application-background">
-    <div className="main-container">
-      <Table
-        data={TABLE_DATA}
-        columns={TABLE_COLUMNS}
-        deleteAction={() => {}}
-        editAction={() => {}}
-      />
+export const Home = () => {
+  const [data, setData] = useState([...TABLE_DATA]);
+  return (
+    <div className="application-background">
+      <div className="main-container">
+        <Table
+          data={data}
+          columns={TABLE_COLUMNS}
+          deleteAction={item => {
+            setData(data.filter(d => d.id !== item.id));
+          }}
+          editAction={item => {
+            setData(data.map(d => (d.id !== item.id ? d : item)));
+          }}
+        />
+      </div>
     </div>
-  </div>
-);
+  );
+};

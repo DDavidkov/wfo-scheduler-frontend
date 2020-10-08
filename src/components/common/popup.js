@@ -6,3 +6,7 @@ export const Popup = ({ content }) => (
     <div className="popup-content-container">{content}</div>
   </div>
 );
+
+export const withPopup = WrappedComponent => props => (
+  <Popup content={<WrappedComponent {...props} />} />
+);
