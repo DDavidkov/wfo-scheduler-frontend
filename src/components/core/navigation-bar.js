@@ -1,26 +1,40 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { Link } from "react-router-dom";
 
 import "./navigation-bar.scss";
 import { Logo } from "./logo";
+import { UserContext } from "./user-context";
 
-export const NavigationBar = ({ isLoggedIn }) => (
-  <nav className="navigation space-between primary-background">
-    <Logo />
-    {isLoggedIn && (
-      <ul className="centered nav-menu spacer-horizontal">
-        <li>
-          <a className="contrast-color nav-item subtitle">Home</a>
-        </li>
-        <li>
-          <a className="contrast-color nav-item subtitle">Request</a>
-        </li>
-        <li>
-          <a className="contrast-color nav-item subtitle">Manage</a>
-        </li>
-        <li>
-          <a className="contrast-color nav-item subtitle">Profile</a>
-        </li>
-      </ul>
-    )}
-  </nav>
-);
+export const NavigationBar = () => {
+  const user = useContext(UserContext);
+  return (
+    <nav className="navigation space-between primary-background">
+      <Logo />
+      {!!user && (
+        <ul className="centered nav-menu spacer-horizontal">
+          <li>
+            <Link to="/" className="contrast-color nav-item subtitle">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link to="/request" className="contrast-color nav-item subtitle">
+              Request
+            </Link>
+          </li>
+          <li>
+            <Link to="/manage" className="contrast-color nav-item subtitle">
+              Manage
+            </Link>
+          </li>
+          <li>
+            <Link to="/profile" className="contrast-color nav-item subtitle">
+              Profile
+            </Link>
+          </li>
+        </ul>
+      )}
+    </nav>
+  );
+};

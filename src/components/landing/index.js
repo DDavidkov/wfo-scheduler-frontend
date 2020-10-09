@@ -28,7 +28,8 @@ export class Landing extends React.Component {
         name: "password",
         label: "Password",
         placeholder: "Enter password",
-        required: true
+        required: true,
+        type: "password"
       }
     ];
 

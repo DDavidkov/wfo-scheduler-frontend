@@ -1,6 +1,11 @@
 import React from "react";
 
-import { BrowserRouter as Router } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
 
 import { NavigationBar } from "./components/core/navigation-bar";
 import { Snackbar } from "./components/common/snackbar";
@@ -12,15 +17,12 @@ import { Request } from "./components/request";
 import { Manage } from "./components/manage";
 import { Admin } from "./components/admin";
 
-/* <Home />
-<Request />
-<Manage teamRequests={TEAM_REQUESTS} />;
-<Admin employeeInfo={EMPLOYEE_INFO} /> */
+import { UserContext } from "./components/core/user-context";
 
 export class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { currentUser: { username: "Test" }, showSnackbar: false };
+    this.state = { currentUser: undefined, showSnackbar: false };
 
     this.login = this.login.bind(this);
     this.closeSnackbar = this.closeSnackbar.bind(this);
@@ -37,21 +39,37 @@ export class App extends React.Component {
   render() {
     return (
       <Router>
-        <NavigationBar isLoggedIn={!!this.state.currentUser} />
-        {this.state.currentUser ? (
-          <div className="application-background">
-            <div className="main-container">
-              <Home />
+        <UserContext.Provider value={this.state.currentUser}>
+          <NavigationBar />
+          {this.state.currentUser ? (
+            <div className="application-background">
+              <div className="main-container">
+                <Switch>
+                  <Route path="/" exact>
+                    <Home />
+                  </Route>
+                  <Route path="/request">
+                    <Request />
+                  </Route>
+                  <Route path="/manage">
+                    <Manage teamRequests={TEAM_REQUESTS} />
+                  </Route>
+                  <Route path="/profile">
+                    <Admin employeeInfo={EMPLOYEE_INFO} />
+                  </Route>
+                  <Redirect from="/home" to="/"></Redirect>
+                </Switch>
+              </div>
             </div>
-          </div>
-        ) : (
-          <Landing login={this.login} />
-        )}
-        <Snackbar
-          isOpen={this.state.showSnackbar}
-          onClose={this.closeSnackbar}
-          message="Successfully logged in!"
-        />
+          ) : (
+            <Landing login={this.login} />
+          )}
+          <Snackbar
+            isOpen={this.state.showSnackbar}
+            onClose={this.closeSnackbar}
+            message="Successfully logged in!"
+          />
+        </UserContext.Provider>
       </Router>
     );
   }
