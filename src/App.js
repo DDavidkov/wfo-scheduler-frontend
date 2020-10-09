@@ -1,21 +1,33 @@
 import React from "react";
 
+import { BrowserRouter as Router } from "react-router-dom";
+
 import { NavigationBar } from "./components/core/navigation-bar";
-import { Landing } from "./components/landing";
-import { Home } from "./components/home";
 import { Snackbar } from "./components/common/snackbar";
+import { Landing } from "./components/landing";
+
+import { EMPLOYEE_INFO, TEAM_REQUESTS } from "./mock-data";
+import { Home } from "./components/home";
+import { Request } from "./components/request";
+import { Manage } from "./components/manage";
+import { Admin } from "./components/admin";
+
+/* <Home />
+<Request />
+<Manage teamRequests={TEAM_REQUESTS} />;
+<Admin employeeInfo={EMPLOYEE_INFO} /> */
 
 export class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isLoggedIn: true, showSnackbar: false };
+    this.state = { currentUser: { username: "Test" }, showSnackbar: false };
 
     this.login = this.login.bind(this);
     this.closeSnackbar = this.closeSnackbar.bind(this);
   }
 
-  login = () => {
-    this.setState({ isLoggedIn: !this.state.isLoggedIn, showSnackbar: true });
+  login = (username, password) => {
+    this.setState({ currentUser: { username, password }, showSnackbar: true });
   };
 
   closeSnackbar = () => {
@@ -24,15 +36,23 @@ export class App extends React.Component {
 
   render() {
     return (
-      <>
-        <NavigationBar isLoggedIn={this.state.isLoggedIn} />
-        {this.state.isLoggedIn ? <Home /> : <Landing login={this.login} />}
+      <Router>
+        <NavigationBar isLoggedIn={!!this.state.currentUser} />
+        {this.state.currentUser ? (
+          <div className="application-background">
+            <div className="main-container">
+              <Home />
+            </div>
+          </div>
+        ) : (
+          <Landing login={this.login} />
+        )}
         <Snackbar
           isOpen={this.state.showSnackbar}
           onClose={this.closeSnackbar}
           message="Successfully logged in!"
         />
-      </>
+      </Router>
     );
   }
 }

@@ -8,8 +8,14 @@
   outline: none;
   cursor: pointer;
   appearance: none;
+  text-align: center;
 }
 
 .btn.primary-background:hover {
   background: var(--secondary-color);
+}
+
+.btn-link {
+  text-decoration: none;
+  display: inline-block;
 }

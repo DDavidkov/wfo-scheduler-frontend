@@ -10,8 +10,15 @@
 }
 
 .input-container {
-  background: #fff;
   border: 1px solid var(--text-color);
   border-radius: 0.25rem;
   padding: 0 1rem;
+}
+
+.input-container-normal {
+  background: #fff;
+}
+
+.input-container-disabled {
+  background: #eee;
 }

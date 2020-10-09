@@ -42,3 +42,60 @@ export const TABLE_COLUMNS = [
   { header: "Date", field: "date", type: "date" },
   { header: "Approved", field: "approved", type: "bool" }
 ];
+
+export const EMPLOYEE_INFO = {
+  first_name: "Spider",
+  last_name: "Man",
+  role: "Employee",
+  team: {
+    name: "Marvel"
+  },
+  manager: {
+    first_name: "Bruce",
+    last_name: "'The Hulk' Banner"
+  }
+};
+//  const columns = [
+//    { header: "Description", field: "description" },
+//    { header: "Employee", field: "employee" },
+//    { header: "Date", field: "date" },
+//    { header: "Approved", field: "approved" }
+//  ];
+
+export const TEAM_REQUESTS = [
+  {
+    id: 1,
+    description: "WFO request for today",
+    employee: "Spider man",
+    date: new Date(),
+    approved: false
+  },
+  {
+    id: 2,
+    description: "WFO request for today",
+    employee: "Iron man",
+    date: new Date(),
+    approved: false
+  },
+  {
+    id: 3,
+    description: "WFO request for today",
+    employee: "Black Widow",
+    date: new Date(),
+    approved: true
+  },
+  {
+    id: 4,
+    description: "WFO request for today",
+    employee: "Hulk",
+    date: new Date(),
+    approved: true
+  },
+  {
+    id: 5,
+    description: "WFO request for today",
+    employee: "Captain Marvel",
+    date: new Date(),
+    approved: false
+  }
+];

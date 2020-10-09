@@ -1,0 +1,18 @@
+.info-text {
+  line-height: 2.875rem;
+}
+
+.request-container {
+  display: grid;
+  grid-template-columns: minmax(auto, 25rem) minmax(auto, 25rem);
+  grid-column-gap: 1rem;
+}
+
+.availability-requests-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.request-label {
+  font-weight: bold;
+}
