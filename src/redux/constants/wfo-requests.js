@@ -1,0 +1,3 @@
+export const SET_REQUESTS = "SET_REQUESTS";
+export const EDIT_REQUEST = "EDIT_REQUEST";
+export const DELETE_REQUEST = "DELETE_REQUEST";

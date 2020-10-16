@@ -7,6 +7,9 @@ import {
   Redirect
 } from "react-router-dom";
 
+import { connect } from "react-redux";
+import { showSnackbar, hideSnackbar } from "./redux/actions/snackbar";
+
 import { NavigationBar } from "./components/core/navigation-bar";
 import { Snackbar } from "./components/common/snackbar";
 import { Landing } from "./components/landing";
@@ -22,18 +25,20 @@ import { UserContext } from "./components/core/user-context";
 export class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { currentUser: undefined, showSnackbar: false };
+    this.state = { currentUser: undefined };
 
     this.login = this.login.bind(this);
     this.closeSnackbar = this.closeSnackbar.bind(this);
   }
 
   login = (username, password) => {
-    this.setState({ currentUser: { username, password }, showSnackbar: true });
+    this.setState({ currentUser: { username, password } });
+
+    this.props.showSnackbar("Successfully logged in!");
   };
 
   closeSnackbar = () => {
-    this.setState({ showSnackbar: false });
+    this.props.hideSnackbar();
   };
 
   render() {
@@ -65,12 +70,21 @@ export class App extends React.Component {
             <Landing login={this.login} />
           )}
           <Snackbar
-            isOpen={this.state.showSnackbar}
+            isOpen={this.props.open}
             onClose={this.closeSnackbar}
-            message="Successfully logged in!"
+            message={this.props.message}
           />
         </UserContext.Provider>
       </Router>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  open: state.snackbar.open,
+  message: state.snackbar.message
+});
+
+const mapDispatchToProps = { showSnackbar, hideSnackbar };
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

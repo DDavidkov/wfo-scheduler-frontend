@@ -1,19 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { Table } from "../common/table";
 
-import { TABLE_DATA, TABLE_COLUMNS } from "../../mock-data";
+import { TABLE_COLUMNS, TABLE_DATA } from "../../mock-data";
+
+import { useSelector, useDispatch } from "react-redux";
+import {
+  deleteWFORequest,
+  editWFORequest,
+  setWFORequests
+} from "../../redux/actions/wfo-requests";
 
 export const Home = () => {
-  const [data, setData] = useState([...TABLE_DATA]);
+  const dispatch = useDispatch();
+
+  const { wfoRequests } = useSelector(state => ({
+    wfoRequests: state.wfoRequests.wfoRequests
+  }));
+
+  useEffect(() => {
+    dispatch(setWFORequests(TABLE_DATA));
+  }, []);
+
   return (
     <Table
-      data={data}
+      data={wfoRequests}
       columns={TABLE_COLUMNS}
       deleteAction={item => {
-        setData(data.filter(d => d.id !== item.id));
+        dispatch(deleteWFORequest(item.id));
       }}
       editAction={item => {
-        setData(data.map(d => (d.id !== item.id ? d : item)));
+        dispatch(editWFORequest(item));
       }}
     />
   );
