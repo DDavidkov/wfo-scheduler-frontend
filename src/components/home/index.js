@@ -5,9 +5,9 @@ import { TABLE_COLUMNS, TABLE_DATA } from "../../mock-data";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
-  deleteWFORequest,
-  editWFORequest,
-  setWFORequests
+  removeRequest,
+  updateRequest,
+  setRequests
 } from "../../redux/actions/wfo-requests";
 
 export const Home = () => {
@@ -18,7 +18,7 @@ export const Home = () => {
   }));
 
   useEffect(() => {
-    dispatch(setWFORequests(TABLE_DATA));
+    dispatch(setRequests(TABLE_DATA));
   }, []);
 
   return (
@@ -26,10 +26,10 @@ export const Home = () => {
       data={wfoRequests}
       columns={TABLE_COLUMNS}
       deleteAction={item => {
-        dispatch(deleteWFORequest(item.id));
+        dispatch(removeRequest(item.id));
       }}
       editAction={item => {
-        dispatch(editWFORequest(item));
+        dispatch(updateRequest(item));
       }}
     />
   );

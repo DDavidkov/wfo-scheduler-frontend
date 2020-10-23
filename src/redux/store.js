@@ -1,9 +1,6 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { logger } from "redux-logger";
 
-import snackbar from "./reducers/snackbar";
-import wfoRequests from "./reducers/wfo-requests";
-
-const reducer = combineReducers({ snackbar, wfoRequests });
+import reducer from "./reducers";
 
 export const store = createStore(reducer, applyMiddleware(logger));
