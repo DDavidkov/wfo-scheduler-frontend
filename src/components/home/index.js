@@ -13,8 +13,8 @@ import {
 export const Home = () => {
   const dispatch = useDispatch();
 
-  const { wfoRequests } = useSelector(state => ({
-    wfoRequests: state.wfoRequests.wfoRequests
+  const { requests } = useSelector(state => ({
+    requests: state.wfoRequests.requests
   }));
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export const Home = () => {
 
   return (
     <Table
-      data={wfoRequests}
+      data={requests}
       columns={TABLE_COLUMNS}
       deleteAction={item => {
         dispatch(removeRequest(item.id));
