@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { Table } from "../common/table";
 
-import { TABLE_COLUMNS, TABLE_DATA } from "../../mock-data";
+import { TABLE_COLUMNS } from "../../mock-data";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
   removeRequest,
   updateRequest,
-  setRequests
+  fetchRequests
 } from "../../redux/actions/wfo-requests";
 
 export const Home = () => {
@@ -18,7 +18,7 @@ export const Home = () => {
   }));
 
   useEffect(() => {
-    dispatch(setRequests(TABLE_DATA));
+    dispatch(fetchRequests());
   }, []);
 
   return (

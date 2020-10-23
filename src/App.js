@@ -9,6 +9,7 @@ import {
 
 import { connect } from "react-redux";
 import { showSnackbar, hideSnackbar } from "./redux/actions/snackbar";
+import { login } from "./redux/effects/employees";
 
 import { NavigationBar } from "./components/core/navigation-bar";
 import { Snackbar } from "./components/common/snackbar";
@@ -25,17 +26,8 @@ import { UserContext } from "./components/core/user-context";
 export class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { currentUser: undefined };
-
-    this.login = this.login.bind(this);
     this.closeSnackbar = this.closeSnackbar.bind(this);
   }
-
-  login = (username, password) => {
-    this.setState({ currentUser: { username, password } });
-
-    this.props.showSnackbar("Successfully logged in!");
-  };
 
   closeSnackbar = () => {
     this.props.hideSnackbar();
@@ -44,9 +36,9 @@ export class App extends React.Component {
   render() {
     return (
       <Router>
-        <UserContext.Provider value={this.state.currentUser}>
+        <UserContext.Provider value={this.props.currentEmployee}>
           <NavigationBar />
-          {this.state.currentUser ? (
+          {this.props.currentEmployee ? (
             <div className="application-background">
               <div className="main-container">
                 <Switch>
@@ -67,7 +59,7 @@ export class App extends React.Component {
               </div>
             </div>
           ) : (
-            <Landing login={this.login} />
+            <Landing login={this.props.login} />
           )}
           <Snackbar
             isOpen={this.props.open}
@@ -82,9 +74,10 @@ export class App extends React.Component {
 
 const mapStateToProps = state => ({
   open: state.snackbar.open,
-  message: state.snackbar.message
+  message: state.snackbar.message,
+  currentEmployee: state.employees.currentEmployee
 });
 
-const mapDispatchToProps = { showSnackbar, hideSnackbar };
+const mapDispatchToProps = { showSnackbar, hideSnackbar, login };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

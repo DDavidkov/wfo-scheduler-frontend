@@ -43,7 +43,7 @@ export const deleteRequest = url => {
   const token = getToken();
 
   return fetch(url, {
-    method: "PUT",
+    method: "DELETE",
     headers: {
       Authorization: token ? token.token : undefined,
       Accept: "application/json",
@@ -52,7 +52,7 @@ export const deleteRequest = url => {
   });
 };
 
-const getToken = () => {
+export const getToken = () => {
   try {
     const token = JSON.parse(localStorage.getItem("jwtToken"));
 

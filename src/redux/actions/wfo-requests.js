@@ -6,7 +6,8 @@ import {
   SET_AVAILABILITY,
   SET_TEAM_REQUESTS,
   UPDATE_TEAM_REQUEST,
-  REMOVE_TEAM_REQUEST
+  REMOVE_TEAM_REQUEST,
+  FETCH_REQUESTS
 } from "../constants/wfo-requests";
 
 export const setRequests = requests => ({
@@ -48,3 +49,5 @@ export const removeTeamRequest = requestId => ({
   type: REMOVE_TEAM_REQUEST,
   payload: requestId
 });
+
+export const fetchRequests = () => ({ type: FETCH_REQUESTS });

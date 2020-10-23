@@ -7,4 +7,6 @@ export const UPDATE_TEAM_REQUEST = "UPDATE_TEAM_REQUEST";
 export const SET_TEAM_REQUESTS = "SET_TEAM_REQUESTS";
 export const REMOVE_TEAM_REQUEST = "REMOVE_TEAM_REQUEST";
 
+export const FETCH_REQUESTS = "FETCH_REQUESTS";
+
 export const REQUESTS_PATH = process.env.REACT_APP_BACKEND_URL + "/wfo-request";
