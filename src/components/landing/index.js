@@ -22,14 +22,16 @@ export class Landing extends React.Component {
         name: "userName",
         label: "Username",
         placeholder: "Enter username",
-        required: true
+        required: true,
+        "data-testid": "username"
       },
       {
         name: "password",
         label: "Password",
         placeholder: "Enter password",
         required: true,
-        type: "password"
+        type: "password",
+        "data-testid": "password"
       }
     ];
 
