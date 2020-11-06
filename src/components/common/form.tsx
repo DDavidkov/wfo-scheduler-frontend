@@ -1,10 +1,32 @@
-import React from "react";
+import React, { SyntheticEvent } from "react";
 
 import { Input } from "./input";
 import { Button } from "./buttons";
 
-export class Form extends React.Component {
-  constructor(props) {
+interface FormProps {
+  initialValue: object;
+  onSubmit: Function;
+  fields: Array<FormField>;
+  buttonTemplate: Element;
+  submitText: string;
+  isContrast: boolean;
+}
+
+interface FormField {
+  label: string;
+  name: string;
+}
+
+interface FormState {
+  value: FormStateValue;
+}
+
+interface FormStateValue {
+  [key: string]: any;
+}
+
+export class Form extends React.Component<FormProps, FormState> {
+  constructor(props: FormProps) {
     super(props);
     this.state = {
       value: this.props.initialValue || {}
@@ -12,14 +34,14 @@ export class Form extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onSubmit(e) {
+  onSubmit(e: SyntheticEvent) {
     e.preventDefault();
     if (this.props.onSubmit) {
       this.props.onSubmit(this.state.value);
     }
   }
 
-  onFieldChange = (value, fieldName) => {
+  onFieldChange = (value: any, fieldName: string) => {
     this.setState({
       value: { ...this.state.value, [fieldName]: value }
     });

@@ -13,14 +13,14 @@ export const YesNoDialog = ({ header, text, onYes, onHide }) => (
           onYes && onYes();
           onHide();
         }}
-        backgroundClass="success-background"
+        variant="success"
         text="Yes"
       />
       <Button
         onClick={() => {
           onHide();
         }}
-        backgroundClass="error-background"
+        variant="error"
         text="No"
       />
     </div>

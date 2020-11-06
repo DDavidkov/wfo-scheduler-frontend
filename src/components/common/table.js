@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import "./table.scss";
 
 import EditForm from "./edit-form";
@@ -112,4 +113,11 @@ export const Table = ({
       )}
     </>
   );
+};
+
+Table.propTypes = {
+  data: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
+  columns: PropTypes.array.isRequired,
+  editAction: PropTypes.func.isRequired,
+  deleteAction: PropTypes.func
 };

@@ -15,13 +15,9 @@ export const EditForm = ({ onSubmit, fields, onHide, initialValue }) => (
       }}
       buttonTemplate={
         <div className="space-between">
+          <Button variant="success" text="Submit" type="submit" />
           <Button
-            backgroundClass="success-background"
-            text="Submit"
-            type="submit"
-          />
-          <Button
-            backgroundClass="error-background"
+            variant="error"
             text="Cancel"
             onClick={() => {
               onHide && onHide();
